@@ -34,22 +34,25 @@ public class TesteProduto {
 //        ProdutoDao dao = new ProdutoDao();
 //        Produto produto = dao.findById(1);
 
+//        ProdutoDao dao = new ProdutoDao();
+//        List<Produto> produtos = dao.findAll();
+
         ProdutoDao dao = new ProdutoDao();
-        List<Produto> produtos = dao.findAll();
+        Produto produto =  dao.remove(1);
 
         System.out.println("==============================");
         System.out.println("Produto");
         System.out.println("==============================");
-        System.out.println(produtos);
+        System.out.println(produto);
         ConnectionFactory.emf.close();
         
-        for (Produto produto : produtos) {
-            System.out.println("Descrição: " + produto.getDesricao());
-            System.out.println("Quantidade: " + produto.getQtd());
-            System.out.println("Valor: " + produto.getValor());
-            System.out.println("Categoria: " + produto.getCategoria().getDescricao());
-            System.out.println("==============================");
-        }
+//        for (Produto produto : produtos) {
+//            System.out.println("Descrição: " + produto.getDesricao());
+//            System.out.println("Quantidade: " + produto.getQtd());
+//            System.out.println("Valor: " + produto.getValor());
+//            System.out.println("Categoria: " + produto.getCategoria().getDescricao());
+//            System.out.println("==============================");
+//        }
     }
     
 }

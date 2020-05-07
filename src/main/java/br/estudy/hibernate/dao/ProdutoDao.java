@@ -53,4 +53,21 @@ public class ProdutoDao {
         }
         return produtos;
     }
+    
+    public Produto remove(Integer id) {
+        EntityManager em = ConnectionFactory.getConnection();
+        Produto produto = null;
+
+        try {
+            em.getTransaction().begin();
+            produto = em.find(Produto.class, id);
+            em.remove(produto);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            System.err.println(e);
+        } finally {
+            em.close();
+        }
+        return produto;
+    }
 }
