@@ -24,4 +24,18 @@ public class ProdutoDao {
         }
         return produto;
     }
+    
+    public Produto findById(Integer id) {
+        EntityManager em = ConnectionFactory.getConnection();
+        Produto produto = null;
+        
+        try {
+            produto = em.find(Produto.class, id);
+        } catch (Exception e) {
+            System.err.println(e);
+        } finally {
+            em.close();
+        }
+        return produto;
+    }
 }
