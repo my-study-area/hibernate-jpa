@@ -1,19 +1,18 @@
 package br.estudy.hibernate.ja;
 
+import br.estudy.hibernate.connection.ConnectionFactory;
 import br.estudy.hibernate.model.Categoria;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 public class Teste {
     public static void main(String[] args) {
         System.out.println("Olaaa");
         
         Categoria c = new Categoria();
-        c.setDescricao("alimento");
+        c.setDescricao("teste");
         
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("seuPU");
-        EntityManager  em = emf.createEntityManager();
+//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("seuPU");
+        EntityManager  em = ConnectionFactory.getConnection();
         
         em.getTransaction().begin();
         em.persist(c);
@@ -23,7 +22,8 @@ public class Teste {
         System.out.println(c.getDescricao());
         
         em.close();
-        emf.close();
+        ConnectionFactory.getConnection().close();
+        
     }
     
 }
