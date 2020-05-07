@@ -51,5 +51,21 @@ public class CategoriaDao {
         }
         return categorias;
     }
+
+    public Categoria remove(Integer id) {
+        EntityManager em = ConnectionFactory.getConnection();
+        Categoria categoria = null;
+        try {
+            em.getTransaction().begin();
+            categoria = em.find(Categoria.class, id);
+            em.remove(categoria);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            System.err.println(e);
+        } finally {
+            em.close();
+        }
+        return categoria;
+    }
 }
 

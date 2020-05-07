@@ -23,14 +23,18 @@ public class Teste {
 //        ConnectionFactory.emf.close();
 //        System.out.println(categoria);
 
+//        CategoriaDao dao = new CategoriaDao();
+//        List<Categoria> categorias = dao.findAll();
+//        System.out.println(categorias);
+//        for (Categoria categoria : categorias) {
+//            System.out.println("id: " + categoria.getId());
+//            System.out.println("descrição: " + categoria.getDescricao());
+//            System.out.println("======================");
+//        }
+//        ConnectionFactory.emf.close();
+
         CategoriaDao dao = new CategoriaDao();
-        List<Categoria> categorias = dao.findAll();
-        System.out.println(categorias);
-        for (Categoria categoria : categorias) {
-            System.out.println("id: " + categoria.getId());
-            System.out.println("descrição: " + categoria.getDescricao());
-            System.out.println("======================");
-        }
+        dao.remove(13);
         ConnectionFactory.emf.close();
     }
     
