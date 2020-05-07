@@ -2,6 +2,7 @@ package br.estudy.hibernate.dao;
 
 import br.estudy.hibernate.connection.ConnectionFactory;
 import br.estudy.hibernate.model.Categoria;
+import java.util.List;
 import javax.persistence.EntityManager;
 
 public class CategoriaDao {
@@ -37,4 +38,18 @@ public class CategoriaDao {
         return categoria;
     }
     
+
+    public List<Categoria> findAll() {
+        EntityManager em = ConnectionFactory.getConnection();
+        List<Categoria> categorias = null;
+        try {
+            categorias = em.createQuery("from Categoria c").getResultList();
+        } catch (Exception e) {
+            System.err.println(e);
+        } finally {
+            em.close();
+        }
+        return categorias;
+    }
 }
+
