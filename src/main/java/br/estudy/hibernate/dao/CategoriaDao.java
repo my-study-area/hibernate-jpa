@@ -23,5 +23,18 @@ public class CategoriaDao {
         }
         return categoria;
     }
+
+    public Categoria findById(Integer id) {
+        EntityManager em = ConnectionFactory.getConnection();
+        Categoria categoria = null;
+        try {
+            categoria = em.find(Categoria.class, id);
+        } catch (Exception e) {
+            System.err.println(e);
+        } finally {
+            em.close();
+        }
+        return categoria;
+    }
     
 }
