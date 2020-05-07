@@ -4,6 +4,7 @@ import br.estudy.hibernate.connection.ConnectionFactory;
 import br.estudy.hibernate.dao.ProdutoDao;
 import br.estudy.hibernate.model.Categoria;
 import br.estudy.hibernate.model.Produto;
+import java.util.List;
 
 public class TesteProduto {
     public static void main(String[] args) {
@@ -30,14 +31,25 @@ public class TesteProduto {
 //        ProdutoDao dao = new ProdutoDao();
 //        dao.save(produto);
       
+//        ProdutoDao dao = new ProdutoDao();
+//        Produto produto = dao.findById(1);
+
         ProdutoDao dao = new ProdutoDao();
-        Produto produto = dao.findById(1);
+        List<Produto> produtos = dao.findAll();
 
         System.out.println("==============================");
         System.out.println("Produto");
         System.out.println("==============================");
-        System.out.println(produto);
+        System.out.println(produtos);
         ConnectionFactory.emf.close();
+        
+        for (Produto produto : produtos) {
+            System.out.println("Descrição: " + produto.getDesricao());
+            System.out.println("Quantidade: " + produto.getQtd());
+            System.out.println("Valor: " + produto.getValor());
+            System.out.println("Categoria: " + produto.getCategoria().getDescricao());
+            System.out.println("==============================");
+        }
     }
     
 }
